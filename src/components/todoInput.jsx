@@ -1,14 +1,15 @@
-import { useContext, useRef } from "react";
-import { AlertContext } from "../contexts/alertContext";
+import { useRef } from "react";
 import { useTodoConstate } from "../contexts/todoConstate";
+import { useAlertConstate } from "../contexts/alertConstate";
 
 const TodoInput = () => {
   /*
     Use this with regular context
     const { addTodo } = useContext(TodoContext);
+    const { toggleAlert, changeAlert } = useContext(AlertContext);
   */
   const { addTodo } = useTodoConstate();
-  const { toggleAlert, changeAlert } = useContext(AlertContext);
+  const { toggleAlert, changeAlert } = useAlertConstate();
   const textRef = useRef(null);
 
   const handleAddTodo = () => {

@@ -1,8 +1,10 @@
-import { useContext } from "react";
-import { AlertContext } from "../contexts/alertContext";
+import { useAlertConstate } from "../contexts/alertConstate";
 
 const Alert = () => {
-  const { toggleAlert, alert } = useContext(AlertContext);
+  // use with regular context api
+  // const { toggleAlert, alert } = useContext(AlertContext);
+
+  const { toggleAlert, alert } = useAlertConstate();
 
   return (
     <div

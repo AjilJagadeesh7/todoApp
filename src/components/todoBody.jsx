@@ -1,11 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import TodoInput from "./todoInput";
 import TodoList from "./todoList";
 import Alert from "./errorAlert";
-import { AlertContext } from "../contexts/alertContext";
+import { useAlertConstate } from "../contexts/alertConstate";
 
 const TodoBody = () => {
-  const { showAlert, toggleAlert } = useContext(AlertContext);
+  // use with regular context api
+  // const { showAlert, toggleAlert } = useContext(AlertContext);
+  const { showAlert, toggleAlert } = useAlertConstate();
   useEffect(() => {
     if (showAlert) {
       setTimeout(() => {
