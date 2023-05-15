@@ -1,8 +1,11 @@
-import { useContext } from "react";
-import { TodoContext } from "../contexts/todoContext";
+import { useTodoConstate } from "../contexts/todoConstate";
 
 const TodoList = () => {
-  const { todoList, toggleCompleted } = useContext(TodoContext);
+  /*
+    Use this with regular context
+    const { todoList, toggleCompleted } = useContext(TodoContext);
+  */
+  const { todoList, toggleCompleted } = useTodoConstate();
   return (
     <div>
       {todoList.length > 0 ? (

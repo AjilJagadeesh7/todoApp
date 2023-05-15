@@ -1,16 +1,20 @@
-import TodoProvider from "./contexts/todoContext";
-import AlertProvider from "./contexts/alertContext";
 import TodoBody from "./components/todoBody";
+import { AlertConstateProvider } from "./contexts/alertConstate";
+import { TodoListProvider } from "./contexts/todoConstate";
 
 function App() {
   return (
-    <AlertProvider>
-      <TodoProvider>
+    <AlertConstateProvider>
+      <TodoListProvider>
         <div className="flex justify-center h-screen items-center bg-slate-800">
           <TodoBody />
         </div>
-      </TodoProvider>
-    </AlertProvider>
+      </TodoListProvider>
+    </AlertConstateProvider>
+    // <AlertProvider>
+    //    <TodoProvider>
+    //   </TodoProvider>
+    //  </AlertProvider>
   );
 }
 
