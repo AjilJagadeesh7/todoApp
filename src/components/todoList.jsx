@@ -13,7 +13,7 @@ const TodoList = () => {
           {todoList.map((item, key) => (
             <li
               onClick={() => toggleCompleted(item.id)}
-              className={`whitespace-normal break-words ${
+              className={`whitespace-normal break-words cursor-pointer ${
                 item.completed ? "line-through" : ""
               }`}
               key={key}

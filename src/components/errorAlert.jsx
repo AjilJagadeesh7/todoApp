@@ -8,9 +8,10 @@ const Alert = () => {
 
   return (
     <div
-      className={`alert ${
+      className={`alert w-[90vw] md:w-[50vw] xl:w-[40vw] ${
         alert?.type === "error" ? "alert-error" : "alert-success"
-      } shadow-lg`}
+      } shadow-lg cursor-pointer animate-bounce absolute bottom-1
+      `}
       onClick={() => toggleAlert(false)}
     >
       <div>

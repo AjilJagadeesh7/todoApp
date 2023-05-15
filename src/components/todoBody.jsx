@@ -17,11 +17,13 @@ const TodoBody = () => {
   }, [showAlert]);
 
   return (
-    <div className="h-[50%] w-[40%] bg-slate-700 p-10 rounded-xl text-white shadow-lg drop-shadow-xl shadow-slate-900">
-      <TodoInput />
-      <TodoList />
+    <>
+      <div className="h-[50%] w-[40%] bg-slate-700 p-10 rounded-xl text-white shadow-lg drop-shadow-xl shadow-slate-900">
+        <TodoInput />
+        <TodoList />
+      </div>
       {showAlert ? <Alert errorMessage="Cannot submit empty todo" /> : null}
-    </div>
+    </>
   );
 };
 
