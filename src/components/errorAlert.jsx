@@ -1,18 +1,24 @@
-import { useAlertConstate } from "../contexts/alertConstate";
+import { useDispatch, useSelector } from "react-redux";
+import { selectAlert, toggleAlert } from "../data/alertSlice";
 
 const Alert = () => {
   // use with regular context api
   // const { toggleAlert, alert } = useContext(AlertContext);
 
-  const { toggleAlert, alert } = useAlertConstate();
+  // const { toggleAlert, alert } = useAlertConstate();
 
+  const alert = useSelector(selectAlert);
+  const dispatch = useDispatch();
   return (
     <div
       className={`alert w-[90vw] md:w-[50vw] xl:w-[40vw] ${
         alert?.type === "error" ? "alert-error" : "alert-success"
       } shadow-lg cursor-pointer animate-bounce absolute bottom-1
       `}
-      onClick={() => toggleAlert(false)}
+      onClick={() => {
+        dispatch(toggleAlert(false));
+        // toggleAlert(false)
+      }}
     >
       <div>
         {alert.type !== "error" ? (

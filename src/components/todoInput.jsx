@@ -1,7 +1,7 @@
 import { useRef } from "react";
-import { useAlertConstate } from "../contexts/alertConstate";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../data/todoSlice";
+import { changeAlert, toggleAlert } from "../data/alertSlice";
 
 const TodoInput = () => {
   /*
@@ -10,25 +10,39 @@ const TodoInput = () => {
     const { toggleAlert, changeAlert } = useContext(AlertContext);
   */
   // const { addTodo } = useTodoConstate();
+  // const { toggleAlert, changeAlert } = useAlertConstate();
   const dispatch = useDispatch();
-  const { toggleAlert, changeAlert } = useAlertConstate();
   const textRef = useRef(null);
 
   const handleAddTodo = () => {
     if (textRef.current.value.length > 0) {
-      changeAlert({
-        message: "Successfully added todo",
-        type: "success",
-      });
-      toggleAlert(true);
+      // changeAlert({
+      //   message: "Successfully added todo",
+      //   type: "success",
+      // });
+      dispatch(
+        changeAlert({
+          message: "Successfully added todo",
+          type: "success",
+        })
+      );
+      dispatch(toggleAlert(true));
+      // toggleAlert(true);
       // addTodo(textRef.current.value);
       dispatch(addTodo(textRef.current.value));
     } else {
-      changeAlert({
-        message: "Cannot add todo when field is empty",
-        type: "error",
-      });
-      toggleAlert(true);
+      // changeAlert({
+      //   message: "Cannot add todo when field is empty",
+      //   type: "error",
+      // });
+      dispatch(
+        changeAlert({
+          message: "Cannot add todo when field is empty",
+          type: "error",
+        })
+      );
+      dispatch(toggleAlert(true));
+      // toggleAlert(true);
     }
     textRef.current.value = "";
   };

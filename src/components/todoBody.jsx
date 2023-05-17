@@ -2,16 +2,20 @@ import React, { useEffect } from "react";
 import TodoInput from "./todoInput";
 import TodoList from "./todoList";
 import Alert from "./errorAlert";
-import { useAlertConstate } from "../contexts/alertConstate";
+import { useDispatch, useSelector } from "react-redux";
+import { selectShowAlert, toggleAlert } from "../data/alertSlice";
 
 const TodoBody = () => {
   // use with regular context api
   // const { showAlert, toggleAlert } = useContext(AlertContext);
-  const { showAlert, toggleAlert } = useAlertConstate();
+  // const { showAlert, toggleAlert } = useAlertConstate();
+  const showAlert = useSelector(selectShowAlert);
+  const dispatch = useDispatch();
   useEffect(() => {
     if (showAlert) {
       setTimeout(() => {
-        toggleAlert(false);
+        // toggleAlert(false);
+        dispatch(toggleAlert(false));
       }, 5000);
     }
   }, [showAlert]);
