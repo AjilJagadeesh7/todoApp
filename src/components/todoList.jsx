@@ -2,11 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTodos, toggleTodo } from "../data/todoSlice";
 
 const TodoList = () => {
-  /*
-    Use this with regular context
-    const { todoList, toggleCompleted } = useContext(TodoContext);
-  */
-  // const { todoList, toggleCompleted } = useTodoConstate();
   const todoList = useSelector(selectTodos);
   const dispatch = useDispatch();
   return (
@@ -18,7 +13,6 @@ const TodoList = () => {
             return (
               <li
                 onClick={() => {
-                  // toggleCompleted(item.id)
                   dispatch(toggleTodo(item.id));
                 }}
                 className={`whitespace-normal break-words cursor-pointer ${

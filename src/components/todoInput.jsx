@@ -4,22 +4,11 @@ import { addTodo } from "../data/todoSlice";
 import { changeAlert, toggleAlert } from "../data/alertSlice";
 
 const TodoInput = () => {
-  /*
-    Use this with regular context
-    const { addTodo } = useContext(TodoContext);
-    const { toggleAlert, changeAlert } = useContext(AlertContext);
-  */
-  // const { addTodo } = useTodoConstate();
-  // const { toggleAlert, changeAlert } = useAlertConstate();
   const dispatch = useDispatch();
   const textRef = useRef(null);
 
   const handleAddTodo = () => {
     if (textRef.current.value.length > 0) {
-      // changeAlert({
-      //   message: "Successfully added todo",
-      //   type: "success",
-      // });
       dispatch(
         changeAlert({
           message: "Successfully added todo",
@@ -27,14 +16,9 @@ const TodoInput = () => {
         })
       );
       dispatch(toggleAlert(true));
-      // toggleAlert(true);
-      // addTodo(textRef.current.value);
+
       dispatch(addTodo(textRef.current.value));
     } else {
-      // changeAlert({
-      //   message: "Cannot add todo when field is empty",
-      //   type: "error",
-      // });
       dispatch(
         changeAlert({
           message: "Cannot add todo when field is empty",
@@ -42,7 +26,6 @@ const TodoInput = () => {
         })
       );
       dispatch(toggleAlert(true));
-      // toggleAlert(true);
     }
     textRef.current.value = "";
   };

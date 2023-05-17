@@ -2,11 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectAlert, toggleAlert } from "../data/alertSlice";
 
 const Alert = () => {
-  // use with regular context api
-  // const { toggleAlert, alert } = useContext(AlertContext);
-
-  // const { toggleAlert, alert } = useAlertConstate();
-
   const alert = useSelector(selectAlert);
   const dispatch = useDispatch();
   return (
@@ -17,7 +12,6 @@ const Alert = () => {
       `}
       onClick={() => {
         dispatch(toggleAlert(false));
-        // toggleAlert(false)
       }}
     >
       <div>
