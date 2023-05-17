@@ -1,6 +1,7 @@
 import { useRef } from "react";
-import { useTodoConstate } from "../contexts/todoConstate";
 import { useAlertConstate } from "../contexts/alertConstate";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../data/todoSlice";
 
 const TodoInput = () => {
   /*
@@ -8,7 +9,8 @@ const TodoInput = () => {
     const { addTodo } = useContext(TodoContext);
     const { toggleAlert, changeAlert } = useContext(AlertContext);
   */
-  const { addTodo } = useTodoConstate();
+  // const { addTodo } = useTodoConstate();
+  const dispatch = useDispatch();
   const { toggleAlert, changeAlert } = useAlertConstate();
   const textRef = useRef(null);
 
@@ -19,7 +21,8 @@ const TodoInput = () => {
         type: "success",
       });
       toggleAlert(true);
-      addTodo(textRef.current.value);
+      // addTodo(textRef.current.value);
+      dispatch(addTodo(textRef.current.value));
     } else {
       changeAlert({
         message: "Cannot add todo when field is empty",

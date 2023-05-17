@@ -1,15 +1,19 @@
+import { Provider } from "react-redux";
 import TodoBody from "./components/todoBody";
 import { AlertConstateProvider } from "./contexts/alertConstate";
-import { TodoListProvider } from "./contexts/todoConstate";
+import store from "./store/reduxStore";
+// import { TodoListProvider } from "./contexts/todoConstate";
 
 function App() {
   return (
     <AlertConstateProvider>
-      <TodoListProvider>
+      {/* <TodoListProvider> */}
+      <Provider store={store}>
         <div className="flex justify-center h-screen items-center bg-slate-800">
           <TodoBody />
         </div>
-      </TodoListProvider>
+      </Provider>
+      {/* </TodoListProvider> */}
     </AlertConstateProvider>
     // <AlertProvider>
     //    <TodoProvider>
