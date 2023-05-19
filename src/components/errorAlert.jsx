@@ -1,15 +1,10 @@
-import { useAlertConstate } from "../contexts/alertConstate";
+import { alert, toggleAlert } from "../store/alertStore";
 
 const Alert = () => {
-  // use with regular context api
-  // const { toggleAlert, alert } = useContext(AlertContext);
-
-  const { toggleAlert, alert } = useAlertConstate();
-
   return (
     <div
       className={`alert w-[90vw] md:w-[50vw] xl:w-[40vw] ${
-        alert?.type === "error" ? "alert-error" : "alert-success"
+        alert.value.type === "error" ? "alert-error" : "alert-success"
       } shadow-lg cursor-pointer animate-bounce absolute bottom-1
       `}
       onClick={() => toggleAlert(false)}
@@ -45,7 +40,7 @@ const Alert = () => {
           </svg>
         )}
 
-        <span>{alert ? alert?.message : "error"}</span>
+        <span>{alert.value ? alert.value?.message : null}</span>
       </div>
     </div>
   );

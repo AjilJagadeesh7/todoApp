@@ -1,15 +1,8 @@
 import { useRef } from "react";
-import { useTodoConstate } from "../contexts/todoConstate";
-import { useAlertConstate } from "../contexts/alertConstate";
+import { addTodo } from "../store/todoStore";
+import { changeAlert, toggleAlert } from "../store/alertStore";
 
 const TodoInput = () => {
-  /*
-    Use this with regular context
-    const { addTodo } = useContext(TodoContext);
-    const { toggleAlert, changeAlert } = useContext(AlertContext);
-  */
-  const { addTodo } = useTodoConstate();
-  const { toggleAlert, changeAlert } = useAlertConstate();
   const textRef = useRef(null);
 
   const handleAddTodo = () => {
@@ -32,7 +25,7 @@ const TodoInput = () => {
   return (
     <div>
       <input
-        className="input w-full max-w-xs"
+        className="input w-full"
         ref={textRef}
         type="text"
         onKeyDown={(e) => e.code === "Enter" && handleAddTodo()}

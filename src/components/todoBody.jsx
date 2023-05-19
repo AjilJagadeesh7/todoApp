@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TodoInput from "./todoInput";
 import TodoList from "./todoList";
 import Alert from "./errorAlert";
-import { useAlertConstate } from "../contexts/alertConstate";
+
+import { showAlert, toggleAlert } from "../store/alertStore";
+import { effect } from "@preact/signals-react";
 
 const TodoBody = () => {
-  // use with regular context api
-  // const { showAlert, toggleAlert } = useContext(AlertContext);
-  const { showAlert, toggleAlert } = useAlertConstate();
-  useEffect(() => {
-    if (showAlert) {
+  effect(() => {
+    if (showAlert.value) {
       setTimeout(() => {
         toggleAlert(false);
       }, 5000);
     }
-  }, [showAlert]);
+  });
 
   return (
     <>
@@ -22,7 +21,9 @@ const TodoBody = () => {
         <TodoInput />
         <TodoList />
       </div>
-      {showAlert ? <Alert errorMessage="Cannot submit empty todo" /> : null}
+      {showAlert.value ? (
+        <Alert errorMessage="Cannot submit empty todo" />
+      ) : null}
     </>
   );
 };

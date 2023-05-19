@@ -1,16 +1,11 @@
-import { useTodoConstate } from "../contexts/todoConstate";
+import { todoList, toggleCompleted } from "../store/todoStore";
 
 const TodoList = () => {
-  /*
-    Use this with regular context
-    const { todoList, toggleCompleted } = useContext(TodoContext);
-  */
-  const { todoList, toggleCompleted } = useTodoConstate();
   return (
     <div>
-      {todoList.length > 0 ? (
+      {todoList.value.length > 0 ? (
         <div className="overflow-y-auto  h-[17rem] my-5">
-          {todoList.map((item, key) => (
+          {todoList.value.map((item, key) => (
             <li
               onClick={() => toggleCompleted(item.id)}
               className={`whitespace-normal break-words cursor-pointer ${
