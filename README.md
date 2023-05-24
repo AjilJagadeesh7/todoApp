@@ -6,8 +6,7 @@
 1. Context 🧐
 2. Constate 🤔
 3. Redux and Redux Toolkit 🤓
-4. Zustand 😎
-5. Signals 🤖
+4. Signals 🤖
 
 👉 These different state management tools have been integrated to demonstrate their usage and compare their effectiveness in managing state in a complex React application.
 
